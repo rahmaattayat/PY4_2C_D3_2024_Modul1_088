@@ -2,13 +2,11 @@ class CounterController {
   int _counter = 0;
   int _step = 1;
 
-  // Riwayat Task 2
   final List<String> _history = [];
 
   int get value => _counter;
   int get step => _step;
 
-  // Getter riwayat (copy aman untuk View)
   List<String> get history => List.unmodifiable(_history);
 
   void setStep(int newStep) {
@@ -37,14 +35,11 @@ class CounterController {
     _addToHistory("User mereset counter ke 0");
   }
 
-  // Fungsi private untuk tambah riwayat + limit 5 + hanya jam
   void _addToHistory(String action) {
-    // Hanya jam:menit:detik (contoh: 09:13:45)
     String time = DateTime.now().toString().substring(11, 19);
     String entry = "$action pada jam $time";
-    _history.insert(0, entry);  // terbaru di atas
+    _history.insert(0, entry); 
     if (_history.length > 5) {
-      _history.removeLast();    // hapus yang paling lama
-    }
+      _history.removeLast();   
   }
 }
